@@ -64,6 +64,9 @@ export function SellFormContents({ user }: SellFormContentsProps) {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    if (field === "description" && value.length > 500) {
+      value = value.slice(0, 500);
+    }
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
